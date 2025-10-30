@@ -1,5 +1,8 @@
 package lotto.validator;
 
+import static lotto.enums.ErrorMessage.BLANK_INPUT;
+import static lotto.enums.ErrorMessage.NOT_DIGITS_AND_COMMA_ONLY;
+import static lotto.enums.ErrorMessage.NOT_ONLY_DIGIT;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.Stream;
@@ -9,13 +12,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class InputValidatorTest {
-    private static final String BLANK_INPUT =
-            "빈 문자열이 입력되었습니다.";
-    private static final String NOT_ONLY_DIGIT =
-            "숫자를 제외한 문자가 포함되어 있습니다.";
-    private static final String NOT_DIGITS_AND_COMMA_ONLY =
-            "숫자와 쉼표(,)를 제외한 문자가 포함되어 있습니다.";
-
     private static Stream<Runnable> validatorsForBlankInput() {
         return Stream.of(
                 () -> InputValidator.validatePurchaseAmount(" "),
@@ -45,7 +41,7 @@ class InputValidatorTest {
     void 입력값이_비어_있으면_예외가_발생한다(Runnable validatorCall) {
         assertThatThrownBy(validatorCall::run)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(BLANK_INPUT);
+                .hasMessage(BLANK_INPUT.getMessage());
     }
 
     @DisplayName("숫자를 제외한 문자가 존재하면 예외가 발생한다.")
@@ -54,7 +50,7 @@ class InputValidatorTest {
     void 숫자를_제외한_문자가_존재하면_예외가_발생한다(Runnable validatorCall) {
         assertThatThrownBy(validatorCall::run)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(NOT_ONLY_DIGIT);
+                .hasMessage(NOT_ONLY_DIGIT.getMessage());
     }
 
     @DisplayName("숫자와 쉼표를 제외한 문자가 존재하면 예외가 발생한다.")
@@ -62,7 +58,7 @@ class InputValidatorTest {
     void 숫자와_쉼표를_제외한_문자가_존재하면_예외가_발생한다() {
         assertThatThrownBy(() -> InputValidator.validateWinningNumbers("1, 2, 3, 4, 5, 6"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(NOT_DIGITS_AND_COMMA_ONLY);
+                .hasMessage(NOT_DIGITS_AND_COMMA_ONLY.getMessage());
     }
 
     @DisplayName("입력된 숫자가 int 범위를 벗어나면 예외가 발생한다.")
