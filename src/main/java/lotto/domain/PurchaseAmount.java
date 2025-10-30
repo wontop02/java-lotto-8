@@ -17,5 +17,10 @@ public class PurchaseAmount {
                     ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE.getMessage()
             );
         }
+        if (amount % 1000 != 0) {
+            throw new IllegalArgumentException(
+                    ErrorMessage.INVALID_PURCHASE_AMOUNT_UNIT.getMessage()
+            );
+        }
     }
 }
