@@ -16,4 +16,12 @@ class PurchaseAmountTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_PURCHASE_AMOUNT_RANGE);
     }
+
+    @DisplayName("구입 금액이 100,000,000원을 초과하면 예외가 발생한다.")
+    @Test
+    void 구입_금액이_100000000원을_초과하면_예외가_발생한다() {
+        assertThatThrownBy(() -> new PurchaseAmount("200000000"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_PURCHASE_AMOUNT_RANGE);
+    }
 }
