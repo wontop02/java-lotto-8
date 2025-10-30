@@ -12,7 +12,7 @@ public class PurchaseAmount {
     }
 
     private void validate(int amount) {
-        if (amount < 1000) {
+        if (amount < 1000 || amount > 100000000) {
             throw new IllegalArgumentException(
                     ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE.getMessage()
             );
