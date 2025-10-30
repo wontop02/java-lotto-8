@@ -10,11 +10,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class InputValidatorTest {
     private static final String BLANK_INPUT =
-            "[ERROR] 빈 문자열이 입력되었습니다. 다시 입력해 주세요.";
+            "빈 문자열이 입력되었습니다.";
     private static final String NOT_ONLY_DIGIT =
-            "[ERROR] 숫자를 제외한 문자가 포함되어 있습니다. 다시 입력해 주세요.";
+            "숫자를 제외한 문자가 포함되어 있습니다.";
     private static final String NOT_DIGITS_AND_COMMA_ONLY =
-            "[ERROR] 숫자와 쉼표(,)를 제외한 문자가 포함되어 있습니다. 다시 입력해 주세요";
+            "숫자와 쉼표(,)를 제외한 문자가 포함되어 있습니다.";
 
     private static Stream<Runnable> validatorsForBlankInput() {
         return Stream.of(
