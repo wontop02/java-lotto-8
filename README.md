@@ -97,8 +97,8 @@
 
 ## ✅ 구현 기능 목록
 ### 구입 금액 입력
-- [ ] 사용자에게 입력값 요청
-    - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
+- [x] 사용자에게 입력값 요청
+    - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
 - [ ] 입력값 검증: 잘못된 값일 경우 `IllegalArgumentException` 발생 및 재입력 요청
     - [x] 입력값이 비어 있을 경우
     - [x] 숫자를 제외한 문자가 들어간 경우
@@ -116,8 +116,8 @@
     - [ ] 각 로또의 로또 번호는 오름차순으로 출력
 
 ### 당첨 번호 입력
-- [ ] 사용자에게 입력값 요청
-    - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
+- [x] 사용자에게 입력값 요청
+    - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
 - [ ] 입력값 검증: 잘못된 값일 경우 `IllegalArgumentException` 발생 및 재입력 요청
     - [x] 입력값이 비어 있을 경우
     - [x] 입력값에 숫자와 쉼표(,)를 제외한 문자가 들어간 경우
@@ -125,8 +125,8 @@
     - [ ] 각 당첨 번호의 범위가 1~45가 아닐 경우
 
 ### 보너스 번호 입력
-- [ ] 사용자에게 입력값 요청
-    - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
+- [x] 사용자에게 입력값 요청
+    - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
 - [ ] 입력값 검증: 잘못된 값일 경우 `IllegalArgumentException` 발생 및 재입력 요청
     - [x] 입력값이 비어 있을 경우
     - [x] 입력값에 숫자를 제외한 문자가 들어간 경우
