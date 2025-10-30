@@ -31,6 +31,14 @@ class InputValidatorTest {
         );
     }
 
+    private static Stream<Runnable> validatorsForExceedingIntRange() {
+        return Stream.of(
+                () -> InputValidator.validatePurchaseAmount("9999999999"),
+                () -> InputValidator.validateWinningNumbers("1,2,3,4,5,9999999999"),
+                () -> InputValidator.validateBonusNumber("9999999999")
+        );
+    }
+
     @DisplayName("입력값이 비어 있으면 예외가 발생한다.")
     @ParameterizedTest
     @MethodSource("validatorsForBlankInput")
@@ -55,5 +63,13 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validateWinningNumbers("1, 2, 3, 4, 5, 6"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_DIGITS_AND_COMMA_ONLY);
+    }
+
+    @DisplayName("입력된 숫자가 int 범위를 벗어나면 예외가 발생한다.")
+    @ParameterizedTest
+    @MethodSource("validatorsForExceedingIntRange")
+    void 입력된_숫자가_int_범위를_벗어나면_예외가_발생한다(Runnable validatorCall) {
+        assertThatThrownBy(validatorCall::run)
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
