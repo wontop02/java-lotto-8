@@ -1,6 +1,11 @@
 package lotto.domain;
 
-import lotto.enums.ErrorMessage;
+import static lotto.constant.LottoPolicy.MAX_PURCHASE_AMOUNT;
+import static lotto.constant.LottoPolicy.MIN_PURCHASE_AMOUNT;
+import static lotto.enums.ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE;
+import static lotto.enums.ErrorMessage.INVALID_PURCHASE_AMOUNT_UNIT;
+
+import lotto.constant.LottoPolicy;
 
 public class PurchaseAmount {
     private final int purchaseAmount;
@@ -12,14 +17,14 @@ public class PurchaseAmount {
     }
 
     private void validate(int amount) {
-        if (amount < 1000 || amount > 100000000) {
+        if (amount < MIN_PURCHASE_AMOUNT || amount > MAX_PURCHASE_AMOUNT) {
             throw new IllegalArgumentException(
-                    ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE.getMessage()
+                    INVALID_PURCHASE_AMOUNT_RANGE.getMessage()
             );
         }
-        if (amount % 1000 != 0) {
+        if (amount % LottoPolicy.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(
-                    ErrorMessage.INVALID_PURCHASE_AMOUNT_UNIT.getMessage()
+                    INVALID_PURCHASE_AMOUNT_UNIT.getMessage()
             );
         }
     }

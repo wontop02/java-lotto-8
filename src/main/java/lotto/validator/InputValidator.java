@@ -1,5 +1,12 @@
 package lotto.validator;
 
+import static lotto.enums.ErrorMessage.BLANK_INPUT;
+import static lotto.enums.ErrorMessage.INVALID_BONUS_NUMBER_RANGE;
+import static lotto.enums.ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE;
+import static lotto.enums.ErrorMessage.INVALID_WINNING_NUMBER_RANGE;
+import static lotto.enums.ErrorMessage.NOT_DIGITS_AND_COMMA_ONLY;
+import static lotto.enums.ErrorMessage.NOT_ONLY_DIGIT;
+
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
@@ -11,19 +18,19 @@ public class InputValidator {
 
     private static void validateNotBlank(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException(ErrorMessage.BLANK_INPUT.getMessage());
+            throw new IllegalArgumentException(BLANK_INPUT.getMessage());
         }
     }
 
     private static void validateOnlyDigit(String input) {
         if (!input.matches(ONLY_DIGIT_REGEX)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_ONLY_DIGIT.getMessage());
+            throw new IllegalArgumentException(NOT_ONLY_DIGIT.getMessage());
         }
     }
 
     private static void validateDigitsAndCommaOnly(String input) {
         if (!input.matches(DIGITS_AND_COMMA_ONLY_REGEX)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_DIGITS_AND_COMMA_ONLY.getMessage());
+            throw new IllegalArgumentException(NOT_DIGITS_AND_COMMA_ONLY.getMessage());
         }
     }
 
@@ -38,7 +45,7 @@ public class InputValidator {
     public static void validatePurchaseAmount(String input) {
         validateNotBlank(input);
         validateOnlyDigit(input);
-        validateWithinIntRange(input, ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE);
+        validateWithinIntRange(input, INVALID_PURCHASE_AMOUNT_RANGE);
     }
 
     public static void validateWinningNumbers(String input) {
@@ -46,12 +53,12 @@ public class InputValidator {
         validateDigitsAndCommaOnly(input);
         List<String> numbers = Arrays.asList(input.split(",", -1));
         numbers.forEach(InputValidator::validateNotBlank);
-        numbers.forEach(number -> validateWithinIntRange(number, ErrorMessage.INVALID_WINNING_NUMBER_RANGE));
+        numbers.forEach(number -> validateWithinIntRange(number, INVALID_WINNING_NUMBER_RANGE));
     }
 
     public static void validateBonusNumber(String input) {
         validateNotBlank(input);
         validateOnlyDigit(input);
-        validateWithinIntRange(input, ErrorMessage.INVALID_BONUS_NUMBER_RANGE);
+        validateWithinIntRange(input, INVALID_BONUS_NUMBER_RANGE);
     }
 }
