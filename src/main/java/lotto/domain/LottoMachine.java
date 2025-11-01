@@ -4,7 +4,6 @@ import static lotto.constant.LottoConstant.LOTTO_PRICE;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Lotto;
 
 public class LottoMachine {
     private final int lottoCount;
