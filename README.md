@@ -107,7 +107,7 @@
     - [x] 구입 금액이 1,000원으로 나누어 떨어지지 않을 경우
 
 ### 로또 발행
-- [ ] `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()` 활용해 0-9 사이의 정수 중 무작위 정수 한 개 추출
+- [ ] `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()` 활용해 1-45 사이의 중복되지 않은 정수 6개 반환
     - [ ] 구입 금액에 해당하는 만큼 로또 발행 (1장에 1,000원)
 
 ### 발행한 로또 출력
