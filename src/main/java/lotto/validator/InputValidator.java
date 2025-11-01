@@ -1,9 +1,8 @@
 package lotto.validator;
 
 import static lotto.enums.ErrorMessage.BLANK_INPUT;
-import static lotto.enums.ErrorMessage.INVALID_BONUS_NUMBER_RANGE;
+import static lotto.enums.ErrorMessage.INVALID_NUMBER_RANGE;
 import static lotto.enums.ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE;
-import static lotto.enums.ErrorMessage.INVALID_WINNING_NUMBER_RANGE;
 import static lotto.enums.ErrorMessage.NOT_DIGITS_AND_COMMA_ONLY;
 import static lotto.enums.ErrorMessage.NOT_ONLY_DIGIT;
 
@@ -53,12 +52,12 @@ public class InputValidator {
         validateDigitsAndCommaOnly(input);
         List<String> numbers = Arrays.asList(input.split(",", -1));
         numbers.forEach(InputValidator::validateNotBlank);
-        numbers.forEach(number -> validateWithinIntRange(number, INVALID_WINNING_NUMBER_RANGE));
+        numbers.forEach(number -> validateWithinIntRange(number, INVALID_NUMBER_RANGE));
     }
 
     public static void validateBonusNumber(String input) {
         validateNotBlank(input);
         validateOnlyDigit(input);
-        validateWithinIntRange(input, INVALID_BONUS_NUMBER_RANGE);
+        validateWithinIntRange(input, INVALID_NUMBER_RANGE);
     }
 }
