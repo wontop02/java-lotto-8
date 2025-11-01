@@ -7,7 +7,6 @@ import static lotto.enums.ErrorMessage.DUPLICATED_LOTTO_NUMBER;
 import static lotto.enums.ErrorMessage.INVALID_LOTTO_NUMBER_SIZE;
 import static lotto.enums.ErrorMessage.INVALID_NUMBER_RANGE;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -19,6 +18,10 @@ public class Lotto {
         this.numbers = numbers.stream()
                 .sorted()
                 .toList();
+    }
+
+    public List<Integer> getNumbers() {
+        return List.copyOf(numbers);
     }
 
     private void validate(List<Integer> numbers) {

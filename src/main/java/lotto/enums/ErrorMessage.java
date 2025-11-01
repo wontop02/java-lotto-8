@@ -37,7 +37,8 @@ public enum ErrorMessage {
                     MIN_NUMBER, MAX_NUMBER
             )
     ),
-    DUPLICATED_LOTTO_NUMBER("로또 번호는 중복될 수 없습니다.");
+    DUPLICATED_LOTTO_NUMBER("로또 번호는 중복될 수 없습니다."),
+    DUPLICATED_WINNING_AND_BONUS_NUMBER("당첨 번호와 보너스 번호는 중복될 수 없습니다.");
 
     private final String message;
 
