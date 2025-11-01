@@ -8,12 +8,16 @@ import static lotto.enums.ErrorMessage.INVALID_PURCHASE_AMOUNT_UNIT;
 import lotto.constant.LottoConstant;
 
 public class PurchaseAmount {
-    private final int purchaseAmount;
+    private final int amount;
 
     public PurchaseAmount(String input) {
         int amount = Integer.parseInt(input);
         validate(amount);
-        this.purchaseAmount = amount;
+        this.amount = amount;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 
     private void validate(int amount) {
