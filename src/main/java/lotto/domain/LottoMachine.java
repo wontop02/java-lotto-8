@@ -21,6 +21,6 @@ public class LottoMachine {
             Lotto lotto = new Lotto(lottoNumberGenerator.generate());
             lottos.add(lotto);
         }
-        return lottos;
+        return List.copyOf(lottos);
     }
 }
