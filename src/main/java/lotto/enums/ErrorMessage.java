@@ -1,7 +1,10 @@
 package lotto.enums;
 
+import static lotto.constant.LottoConstant.LOTTO_NUMBER_SIZE;
 import static lotto.constant.LottoConstant.LOTTO_PRICE;
+import static lotto.constant.LottoConstant.MAX_NUMBER;
 import static lotto.constant.LottoConstant.MAX_PURCHASE_AMOUNT;
+import static lotto.constant.LottoConstant.MIN_NUMBER;
 import static lotto.constant.LottoConstant.MIN_PURCHASE_AMOUNT;
 
 public enum ErrorMessage {
@@ -22,8 +25,18 @@ public enum ErrorMessage {
             )
     ),
 
-    INVALID_LOTTO_NUMBER_SIZE("로또 번호는 6개여야 합니다."),
-    INVALID_NUMBER_RANGE("로또 번호는 1 이상 45 이하의 숫자여야 합니다."),
+    INVALID_LOTTO_NUMBER_SIZE(
+            String.format(
+                    "로또 번호는 %d개여야 합니다.",
+                    LOTTO_NUMBER_SIZE
+            )
+    ),
+    INVALID_NUMBER_RANGE(
+            String.format(
+                    "로또 번호는 %d 이상 %d 이하의 숫자여야 합니다.",
+                    MIN_NUMBER, MAX_NUMBER
+            )
+    ),
     DUPLICATED_LOTTO_NUMBER("로또 번호는 중복될 수 없습니다.");
 
     private final String message;
