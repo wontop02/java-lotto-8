@@ -1,8 +1,8 @@
 package lotto.enums;
 
-import static lotto.constant.LottoPolicy.LOTTO_PRICE;
-import static lotto.constant.LottoPolicy.MAX_PURCHASE_AMOUNT;
-import static lotto.constant.LottoPolicy.MIN_PURCHASE_AMOUNT;
+import static lotto.constant.LottoConstant.LOTTO_PRICE;
+import static lotto.constant.LottoConstant.MAX_PURCHASE_AMOUNT;
+import static lotto.constant.LottoConstant.MIN_PURCHASE_AMOUNT;
 
 public enum ErrorMessage {
     BLANK_INPUT("빈 문자열이 입력되었습니다."),
