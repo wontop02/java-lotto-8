@@ -19,9 +19,9 @@ class LottoResultTest {
         WinningLotto winningLotto = new WinningLotto(winningNumbers, 45);
 
         LottoResult lottoResult = new LottoResult(lottos, winningLotto);
-        Map<Rank, Integer> lottoCount = lottoResult.rankLottos();
+        Map<Rank, Integer> rankCount = lottoResult.getRankCount();
 
-        assertThat(lottoCount.get(Rank.FIRST_PLACE)).isEqualTo(1);
-        assertThat(lottoCount.get(Rank.NOTHING)).isEqualTo(1);
+        assertThat(rankCount.get(Rank.FIRST_PLACE)).isEqualTo(1);
+        assertThat(rankCount.get(Rank.NOTHING)).isEqualTo(1);
     }
 }
