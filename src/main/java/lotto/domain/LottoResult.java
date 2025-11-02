@@ -23,6 +23,12 @@ public class LottoResult {
                 .sum();
     }
 
+    public double calculateProfitRate(long purchaseAmount) {
+        long totalPrize = calculateTotalPrize();
+        double profitRate = (double)totalPrize / (double)purchaseAmount * 100;
+        return Math.round(profitRate * 10) / 10.0;
+    }
+
     public Map<Rank, Integer> getRankCount() {
         return Map.copyOf(rankCount);
     }
