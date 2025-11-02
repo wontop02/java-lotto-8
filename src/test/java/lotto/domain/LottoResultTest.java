@@ -33,13 +33,6 @@ class LottoResultTest {
         assertThat(rankCount.get(Rank.FIFTH_PLACE)).isEqualTo(1);
     }
 
-    @DisplayName("모든 로또의 총 당첨 금액을 계산한다.")
-    @Test
-    void 모든_로또의_총_당첨_금액을_계산한다() {
-        long totalPrize = lottoResult.calculateTotalPrize();
-        assertEquals(5_000L, totalPrize);
-    }
-
     @DisplayName("수익률을 둘째 자리에서 반올림해 계산한다.")
     @Test
     void 수익률을_둘째_자리에서_반올림해_계산한다() {

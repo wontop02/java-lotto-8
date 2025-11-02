@@ -16,13 +16,6 @@ public class LottoResult {
         this.rankCount = calculateRankCount();
     }
 
-    public long calculateTotalPrize() {
-        return rankCount.entrySet().stream()
-                .mapToLong(entry ->
-                        entry.getKey().getPrizeMoney() * entry.getValue())
-                .sum();
-    }
-
     public double calculateProfitRate(long purchaseAmount) {
         long totalPrize = calculateTotalPrize();
         double profitRate = (double)totalPrize / (double)purchaseAmount * 100;
@@ -40,5 +33,12 @@ public class LottoResult {
             rankCount.put(rank, rankCount.getOrDefault(rank, 0) + 1);
         }
         return rankCount;
+    }
+
+    private long calculateTotalPrize() {
+        return rankCount.entrySet().stream()
+                .mapToLong(entry ->
+                        entry.getKey().getPrizeMoney() * entry.getValue())
+                .sum();
     }
 }
