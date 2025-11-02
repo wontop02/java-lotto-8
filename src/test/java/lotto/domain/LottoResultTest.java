@@ -34,4 +34,11 @@ class LottoResultTest {
         long totalPrize = lottoResult.calculateTotalPrize();
         assertEquals(2_000_000_000L, totalPrize);
     }
+
+    @DisplayName("수익률을 둘째 자리에서 반올림해 계산한다.")
+    @Test
+    void 수익률을_둘째_자리에서_반올림해_계산한다() {
+        double profitRate = lottoResult.calculateProfitRate(2000L);
+        assertEquals(100_000_000.0, profitRate);
+    }
 }
