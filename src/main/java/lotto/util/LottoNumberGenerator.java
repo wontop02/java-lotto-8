@@ -1,11 +1,11 @@
-package lotto.domain;
+package lotto.util;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 import java.util.List;
 
 public class LottoNumberGenerator {
-    public List<Integer> generate() {
+    public static List<Integer> generate() {
         return pickUniqueNumbersInRange(1, 45, 6);
     }
 }
