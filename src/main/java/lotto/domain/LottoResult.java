@@ -16,11 +16,19 @@ public class LottoResult {
         this.rankCount = calculateRankCount();
     }
 
+    public long calculateTotalPrize() {
+        return rankCount.entrySet().stream()
+                .mapToLong(entry ->
+                        entry.getKey().getPrizeMoney() * entry.getValue())
+                .sum();
+    }
+
     public Map<Rank, Integer> getRankCount() {
         return Map.copyOf(rankCount);
     }
 
     private Map<Rank, Integer> calculateRankCount() {
+        Map<Rank, Integer> rankCount = new HashMap<>();
         for (Lotto lotto : lottos) {
             Rank rank = winningLotto.match(lotto);
             rankCount.put(rank, rankCount.getOrDefault(rank, 0) + 1);
