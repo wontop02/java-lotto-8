@@ -10,7 +10,7 @@ import lotto.constant.LottoConstant;
 public class PurchaseAmount {
     private final long amount;
 
-    public PurchaseAmount(int amount) {
+    public PurchaseAmount(long amount) {
         validate(amount);
         this.amount = amount;
     }
@@ -19,7 +19,7 @@ public class PurchaseAmount {
         return amount;
     }
 
-    private void validate(int amount) {
+    private void validate(long amount) {
         if (amount < MIN_PURCHASE_AMOUNT || amount > MAX_PURCHASE_AMOUNT) {
             throw new IllegalArgumentException(INVALID_PURCHASE_AMOUNT_RANGE);
         }
