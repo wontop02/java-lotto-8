@@ -10,8 +10,7 @@ import lotto.constant.LottoConstant;
 public class PurchaseAmount {
     private final long amount;
 
-    public PurchaseAmount(String input) {
-        int amount = Integer.parseInt(input);
+    public PurchaseAmount(int amount) {
         validate(amount);
         this.amount = amount;
     }
