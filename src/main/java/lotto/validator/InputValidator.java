@@ -1,15 +1,14 @@
 package lotto.validator;
 
-import static lotto.enums.ErrorMessage.BLANK_INPUT;
-import static lotto.enums.ErrorMessage.INVALID_NUMBER_RANGE;
-import static lotto.enums.ErrorMessage.INVALID_PURCHASE_AMOUNT_RANGE;
-import static lotto.enums.ErrorMessage.NOT_DIGITS_AND_COMMA_ONLY;
-import static lotto.enums.ErrorMessage.NOT_ONLY_DIGIT;
+import static lotto.constant.ErrorMessageConstant.BLANK_INPUT;
+import static lotto.constant.ErrorMessageConstant.INVALID_NUMBER_RANGE;
+import static lotto.constant.ErrorMessageConstant.INVALID_PURCHASE_AMOUNT_RANGE;
+import static lotto.constant.ErrorMessageConstant.NOT_DIGITS_AND_COMMA_ONLY;
+import static lotto.constant.ErrorMessageConstant.NOT_ONLY_DIGIT;
 
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
-import lotto.enums.ErrorMessage;
 
 public class InputValidator {
     private static final String ONLY_DIGIT_REGEX = "^[0-9]+$";
@@ -17,27 +16,27 @@ public class InputValidator {
 
     private static void validateNotBlank(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException(BLANK_INPUT.getMessage());
+            throw new IllegalArgumentException(BLANK_INPUT);
         }
     }
 
     private static void validateOnlyDigit(String input) {
         if (!input.matches(ONLY_DIGIT_REGEX)) {
-            throw new IllegalArgumentException(NOT_ONLY_DIGIT.getMessage());
+            throw new IllegalArgumentException(NOT_ONLY_DIGIT);
         }
     }
 
     private static void validateDigitsAndCommaOnly(String input) {
         if (!input.matches(DIGITS_AND_COMMA_ONLY_REGEX)) {
-            throw new IllegalArgumentException(NOT_DIGITS_AND_COMMA_ONLY.getMessage());
+            throw new IllegalArgumentException(NOT_DIGITS_AND_COMMA_ONLY);
         }
     }
 
-    private static void validateWithinIntRange(String input, ErrorMessage errorMessage) {
+    private static void validateWithinIntRange(String input, String errorMessage) {
         BigInteger value = new BigInteger(input);
         if (value.compareTo(BigInteger.valueOf(Integer.MIN_VALUE)) < 0
                 || value.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0) {
-            throw new IllegalArgumentException(errorMessage.getMessage());
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 

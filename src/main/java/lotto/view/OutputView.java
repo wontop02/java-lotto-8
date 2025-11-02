@@ -1,12 +1,12 @@
 package lotto.view;
 
-import static lotto.constant.printConstant.BONUS_MESSAGE;
-import static lotto.constant.printConstant.ERROR_PREFIX;
-import static lotto.constant.printConstant.ERROR_SUFFIX;
-import static lotto.constant.printConstant.PROFIT_FORMAT;
-import static lotto.constant.printConstant.PURCHASE_COUNT_MESSAGE;
-import static lotto.constant.printConstant.RESULT_FORMAT;
-import static lotto.constant.printConstant.RESULT_TITLE;
+import static lotto.constant.printMessageConstant.BONUS_MESSAGE;
+import static lotto.constant.printMessageConstant.ERROR_PREFIX;
+import static lotto.constant.printMessageConstant.ERROR_SUFFIX;
+import static lotto.constant.printMessageConstant.PROFIT_FORMAT;
+import static lotto.constant.printMessageConstant.PURCHASE_COUNT_MESSAGE;
+import static lotto.constant.printMessageConstant.RESULT_FORMAT;
+import static lotto.constant.printMessageConstant.RESULT_TITLE;
 
 import java.util.List;
 import java.util.Map;

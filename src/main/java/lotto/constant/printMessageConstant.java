@@ -1,6 +1,10 @@
 package lotto.constant;
 
-public final class printConstant {
+public final class printMessageConstant {
+    public static final String REQUEST_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
+    public static final String REQUEST_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    public static final String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+
     public static final String ERROR_PREFIX = "[ERROR] ";
     public static final String ERROR_SUFFIX = " 다시 입력해 주세요.";
 

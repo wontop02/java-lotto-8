@@ -8,9 +8,9 @@ import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import static lotto.enums.ErrorMessage.DUPLICATED_LOTTO_NUMBER;
-import static lotto.enums.ErrorMessage.INVALID_LOTTO_NUMBER_SIZE;
-import static lotto.enums.ErrorMessage.INVALID_NUMBER_RANGE;
+import static lotto.constant.ErrorMessageConstant.DUPLICATED_LOTTO_NUMBER;
+import static lotto.constant.ErrorMessageConstant.INVALID_LOTTO_NUMBER_SIZE;
+import static lotto.constant.ErrorMessageConstant.INVALID_NUMBER_RANGE;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -25,7 +25,7 @@ class LottoTest {
     void 로또_번호의_개수가_6개가_넘어가면_예외가_발생한다() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_LOTTO_NUMBER_SIZE.getMessage());
+                .hasMessage(INVALID_LOTTO_NUMBER_SIZE);
     }
 
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
@@ -33,7 +33,7 @@ class LottoTest {
     void 로또_번호에_중복된_숫자가_있으면_예외가_발생한다() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(DUPLICATED_LOTTO_NUMBER.getMessage());
+                .hasMessage(DUPLICATED_LOTTO_NUMBER);
     }
 
     @DisplayName("로또 번호가 최소 최대 범위를 벗어나면 예외가 발생한다.")
@@ -42,6 +42,6 @@ class LottoTest {
     void 로또_번호가_최소_최대_범위를_벗어나면_예외가_발생한다(Runnable lottoConstructor) {
         assertThatThrownBy(lottoConstructor::run)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_NUMBER_RANGE.getMessage());
+                .hasMessage(INVALID_NUMBER_RANGE);
     }
 }

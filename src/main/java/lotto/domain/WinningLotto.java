@@ -1,9 +1,9 @@
 package lotto.domain;
 
+import static lotto.constant.ErrorMessageConstant.DUPLICATED_WINNING_AND_BONUS_NUMBER;
+import static lotto.constant.ErrorMessageConstant.INVALID_NUMBER_RANGE;
 import static lotto.constant.LottoConstant.MAX_NUMBER;
 import static lotto.constant.LottoConstant.MIN_NUMBER;
-import static lotto.enums.ErrorMessage.DUPLICATED_WINNING_AND_BONUS_NUMBER;
-import static lotto.enums.ErrorMessage.INVALID_NUMBER_RANGE;
 
 import lotto.enums.Rank;
 
@@ -28,12 +28,10 @@ public class WinningLotto {
 
     private void validateBonusNumber(int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new IllegalArgumentException(INVALID_NUMBER_RANGE.getMessage());
+            throw new IllegalArgumentException(INVALID_NUMBER_RANGE);
         }
         if (winningNumbers.getNumbers().contains(number)) {
-            throw new IllegalArgumentException(
-                    DUPLICATED_WINNING_AND_BONUS_NUMBER.getMessage()
-            );
+            throw new IllegalArgumentException(DUPLICATED_WINNING_AND_BONUS_NUMBER);
         }
     }
 }

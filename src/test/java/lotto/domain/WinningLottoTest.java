@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.enums.ErrorMessage.DUPLICATED_WINNING_AND_BONUS_NUMBER;
+import static lotto.constant.ErrorMessageConstant.DUPLICATED_WINNING_AND_BONUS_NUMBER;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -18,7 +18,7 @@ class WinningLottoTest {
 
         assertThatThrownBy(() -> new WinningLotto(winningLotto, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(DUPLICATED_WINNING_AND_BONUS_NUMBER.getMessage());
+                .hasMessage(DUPLICATED_WINNING_AND_BONUS_NUMBER);
     }
 
     @DisplayName("로또 당첨 등수를 판단한다.")
