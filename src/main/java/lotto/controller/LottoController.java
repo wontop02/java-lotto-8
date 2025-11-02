@@ -10,7 +10,7 @@ import lotto.domain.LottoResult;
 import lotto.domain.PurchaseAmount;
 import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
-import lotto.util.LottoParser;
+import lotto.util.LottoConverter;
 import lotto.validator.InputValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -26,7 +26,7 @@ public class LottoController {
         PurchaseAmount purchaseAmount = inputPurchaseAmount();
 
         List<Lotto> lottos = lottoService.issueLottos(purchaseAmount);
-        OutputView.printLottos(LottoParser.toNumberLists(lottos));
+        OutputView.printLottos(LottoConverter.toNumberLists(lottos));
 
         WinningLotto winningLotto = makeWinningLotto();
 
@@ -68,7 +68,7 @@ public class LottoController {
                 OutputView.printMessage(REQUEST_WINNING_NUMBERS);
                 String input = InputView.readInput();
                 InputValidator.validateWinningNumbers(input);
-                List<Integer> numbers = LottoParser.toNumbers(input);
+                List<Integer> numbers = LottoConverter.toNumbers(input);
                 return new Lotto(numbers);
             } catch (IllegalArgumentException e) {
                 OutputView.printErrorMessage(e.getMessage());

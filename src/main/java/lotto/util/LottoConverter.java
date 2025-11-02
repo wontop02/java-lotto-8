@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import lotto.domain.Lotto;
 
-public class LottoParser {
-    private LottoParser() {}
+public class LottoConverter {
+    private LottoConverter() {}
 
     public static List<List<Integer>> toNumberLists(List<Lotto> lottos) {
         return lottos.stream()
