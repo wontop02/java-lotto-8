@@ -11,7 +11,7 @@ public class LottoMachine {
 
     public LottoMachine(PurchaseAmount purchaseAmount,
                         LottoNumberGenerator lottoNumberGenerator) {
-        this.lottoCount = purchaseAmount.getAmount() / LOTTO_PRICE;
+        this.lottoCount = (int)(purchaseAmount.getAmount() / LOTTO_PRICE);
         this.lottoNumberGenerator = lottoNumberGenerator;
     }
 

@@ -8,7 +8,7 @@ import static lotto.enums.ErrorMessage.INVALID_PURCHASE_AMOUNT_UNIT;
 import lotto.constant.LottoConstant;
 
 public class PurchaseAmount {
-    private final int amount;
+    private final long amount;
 
     public PurchaseAmount(String input) {
         int amount = Integer.parseInt(input);
@@ -16,7 +16,7 @@ public class PurchaseAmount {
         this.amount = amount;
     }
 
-    public int getAmount() {
+    public long getAmount() {
         return amount;
     }
 
