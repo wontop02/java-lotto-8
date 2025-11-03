@@ -16,6 +16,26 @@ public class InputValidator {
 
     private InputValidator() {}
 
+    public static void validatePurchaseAmount(String input) {
+        validateNotBlank(input);
+        validateOnlyDigit(input);
+        validateWithinIntRange(input, INVALID_PURCHASE_AMOUNT_RANGE);
+    }
+
+    public static void validateWinningNumbers(String input) {
+        validateNotBlank(input);
+        validateDigitsAndCommaOnly(input);
+        List<String> numbers = Arrays.asList(input.split(",", -1));
+        numbers.forEach(InputValidator::validateNotBlank);
+        numbers.forEach(number -> validateWithinIntRange(number, INVALID_NUMBER_RANGE));
+    }
+
+    public static void validateBonusNumber(String input) {
+        validateNotBlank(input);
+        validateOnlyDigit(input);
+        validateWithinIntRange(input, INVALID_NUMBER_RANGE);
+    }
+
     private static void validateNotBlank(String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException(BLANK_INPUT);
@@ -40,25 +60,5 @@ public class InputValidator {
                 || value.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0) {
             throw new IllegalArgumentException(errorMessage);
         }
-    }
-
-    public static void validatePurchaseAmount(String input) {
-        validateNotBlank(input);
-        validateOnlyDigit(input);
-        validateWithinIntRange(input, INVALID_PURCHASE_AMOUNT_RANGE);
-    }
-
-    public static void validateWinningNumbers(String input) {
-        validateNotBlank(input);
-        validateDigitsAndCommaOnly(input);
-        List<String> numbers = Arrays.asList(input.split(",", -1));
-        numbers.forEach(InputValidator::validateNotBlank);
-        numbers.forEach(number -> validateWithinIntRange(number, INVALID_NUMBER_RANGE));
-    }
-
-    public static void validateBonusNumber(String input) {
-        validateNotBlank(input);
-        validateOnlyDigit(input);
-        validateWithinIntRange(input, INVALID_NUMBER_RANGE);
     }
 }
