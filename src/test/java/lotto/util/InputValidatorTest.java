@@ -1,4 +1,4 @@
-package lotto.validator;
+package lotto.util;
 
 import static lotto.constant.ErrorMessageConstant.BLANK_INPUT;
 import static lotto.constant.ErrorMessageConstant.NOT_DIGITS_AND_COMMA_ONLY;
@@ -6,6 +6,7 @@ import static lotto.constant.ErrorMessageConstant.NOT_ONLY_DIGIT;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.Stream;
+import lotto.util.InputValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

@@ -1,4 +1,4 @@
-package lotto.validator;
+package lotto.util;
 
 import static lotto.constant.ErrorMessageConstant.BLANK_INPUT;
 import static lotto.constant.ErrorMessageConstant.INVALID_NUMBER_RANGE;
@@ -13,6 +13,8 @@ import java.util.List;
 public class InputValidator {
     private static final String ONLY_DIGIT_REGEX = "^[0-9]+$";
     private static final String DIGITS_AND_COMMA_ONLY_REGEX = "^[0-9,]+$";
+
+    private InputValidator() {}
 
     private static void validateNotBlank(String input) {
         if (input == null || input.isBlank()) {

@@ -11,7 +11,7 @@ import lotto.domain.PurchaseAmount;
 import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
 import lotto.util.LottoConverter;
-import lotto.validator.InputValidator;
+import lotto.util.InputValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
