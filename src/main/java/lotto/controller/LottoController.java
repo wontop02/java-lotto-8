@@ -1,9 +1,11 @@
 package lotto.controller;
 
 import java.util.List;
+import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.LottoParser;
 import lotto.domain.PurchaseAmount;
+import lotto.enums.LottoRank;
 import lotto.service.LottoService;
 import lotto.util.InputValidator;
 import lotto.view.InputView;
@@ -21,6 +23,7 @@ public class LottoController {
         List<Lotto> lottos = issueLottos(amount);
         Lotto winLotto = requestWinLotto();
         int bonus = requestBonusNumber(winLotto);
+        printResult(lottos, winLotto, bonus);
     }
 
     public PurchaseAmount requestPurchaseAmount() {
@@ -64,5 +67,10 @@ public class LottoController {
                 OutputView.printErrorMessage(e.getMessage());
             }
         }
+    }
+
+    public void printResult(List<Lotto> lottos, Lotto winLotto, int bonus) {
+        Map<LottoRank, Integer> result = service.calculateResult(lottos, winLotto, bonus);
+        OutputView.printResult(result);
     }
 }

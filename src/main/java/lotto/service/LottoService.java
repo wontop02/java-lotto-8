@@ -4,11 +4,14 @@ import static lotto.constant.LottoConstant.LOTTO_PRICE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lotto.domain.BonusNumberParser;
 import lotto.domain.Lotto;
 import lotto.domain.LottoParser;
 import lotto.domain.PurchaseAmount;
+import lotto.enums.LottoRank;
 import lotto.util.LottoNumberGenerator;
 
 public class LottoService {
@@ -33,5 +36,17 @@ public class LottoService {
 
     public int createBonusNumber(String input, Lotto winLotto) {
         return BonusNumberParser.toBonusNumber(input, winLotto);
+    }
+
+    public Map<LottoRank, Integer> calculateResult(List<Lotto> lottos, Lotto winLotto, int bonus) {
+        Map<LottoRank, Integer> result = new HashMap<>();
+        for (Lotto lotto : lottos) {
+            List<Integer> match = new ArrayList<>(lotto.numbers());
+            match.retainAll(winLotto.numbers());
+            boolean matchBonus = lotto.numbers().contains(bonus);
+            LottoRank rank = LottoRank.getLottoRank(match.size(), matchBonus);
+            result.put(rank, result.getOrDefault(rank, 0) + 1);
+        }
+        return result;
     }
 }
