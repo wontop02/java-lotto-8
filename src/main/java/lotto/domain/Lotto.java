@@ -32,4 +32,9 @@ public class Lotto {
             throw new IllegalArgumentException(CAN_NOT_DUPLICATED);
         }
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }

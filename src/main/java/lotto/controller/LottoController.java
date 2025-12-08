@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoParser;
 import lotto.domain.PurchaseAmount;
 import lotto.service.LottoService;
 import lotto.util.InputValidator;
@@ -17,7 +18,7 @@ public class LottoController {
 
     public void run() {
         PurchaseAmount amount = requestPurchaseAmount();
-        List<Lotto> lottos = service.issueLottos(amount.getAmount());
+        issueLottos(amount);
     }
 
     public PurchaseAmount requestPurchaseAmount() {
@@ -30,5 +31,11 @@ public class LottoController {
                 OutputView.printErrorMessage(e.getMessage());
             }
         }
+    }
+
+    public void issueLottos(PurchaseAmount amount) {
+        List<Lotto> lottos = service.issueLottos(amount.getAmount());
+        List<String> parsedLottos = LottoParser.toStringList(lottos);
+        OutputView.printLottos(parsedLottos);
     }
 }
