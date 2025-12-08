@@ -23,7 +23,7 @@ public class LottoController {
         List<Lotto> lottos = issueLottos(amount);
         Lotto winLotto = requestWinLotto();
         int bonus = requestBonusNumber(winLotto);
-        printResult(lottos, winLotto, bonus);
+        printResult(lottos, winLotto, bonus, amount);
     }
 
     public PurchaseAmount requestPurchaseAmount() {
@@ -69,8 +69,10 @@ public class LottoController {
         }
     }
 
-    public void printResult(List<Lotto> lottos, Lotto winLotto, int bonus) {
+    public void printResult(List<Lotto> lottos, Lotto winLotto, int bonus, PurchaseAmount amount) {
         Map<LottoRank, Integer> result = service.calculateResult(lottos, winLotto, bonus);
         OutputView.printResult(result);
+        double rate = service.calculateRateOfReturn(result, amount);
+        OutputView.printRateOfReturn(rate);
     }
 }

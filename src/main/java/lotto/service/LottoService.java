@@ -1,6 +1,7 @@
 package lotto.service;
 
 import static lotto.constant.LottoConstant.LOTTO_PRICE;
+import static lotto.enums.LottoRank.NONE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,5 +49,16 @@ public class LottoService {
             result.put(rank, result.getOrDefault(rank, 0) + 1);
         }
         return result;
+    }
+
+    public double calculateRateOfReturn(Map<LottoRank, Integer> result, PurchaseAmount amount) {
+        long totalPrize = 0;
+        for (Map.Entry<LottoRank, Integer> entry : result.entrySet()) {
+            if (entry.getKey() == NONE) {
+                continue;
+            }
+            totalPrize += entry.getKey().getPrize() * entry.getValue();
+        }
+        return totalPrize / (double) amount.getAmount() * 100;
     }
 }

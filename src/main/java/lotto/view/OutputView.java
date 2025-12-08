@@ -15,6 +15,7 @@ public class OutputView {
                     + "---";
     private static final String PRINT_LOTTO_PRIZE = "%d개 일치%s (%,d원) - %d개";
     private static final String SECOND_LOTTO_PRIZE = ", 보너스 볼 일치";
+    private static final String PRINT_RATE_OF_RETURN = "총 수익률은 %.1f%%입니다.";
 
     private OutputView() {
     }
@@ -46,5 +47,9 @@ public class OutputView {
                     count);
             System.out.println();
         }
+    }
+
+    public static void printRateOfReturn(double rate) {
+        System.out.printf(PRINT_RATE_OF_RETURN, rate);
     }
 }
