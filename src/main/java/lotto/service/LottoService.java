@@ -3,8 +3,10 @@ package lotto.service;
 import static lotto.constant.LottoConstant.LOTTO_PRICE;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoParser;
 import lotto.domain.PurchaseAmount;
 import lotto.util.LottoNumberGenerator;
 
@@ -21,5 +23,10 @@ public class LottoService {
             lottos.add(new Lotto(LottoNumberGenerator.generate()));
         }
         return lottos;
+    }
+
+    public Lotto createWinLotto(String input) {
+        List<String> inputs = Arrays.asList(input.split(","));
+        return LottoParser.toLotto(inputs);
     }
 }

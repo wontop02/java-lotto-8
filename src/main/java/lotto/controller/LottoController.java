@@ -18,7 +18,8 @@ public class LottoController {
 
     public void run() {
         PurchaseAmount amount = requestPurchaseAmount();
-        issueLottos(amount);
+        List<Lotto> lottos = issueLottos(amount);
+        Lotto winLotto = requestWinLotto();
     }
 
     public PurchaseAmount requestPurchaseAmount() {
@@ -33,9 +34,22 @@ public class LottoController {
         }
     }
 
-    public void issueLottos(PurchaseAmount amount) {
+    public List<Lotto> issueLottos(PurchaseAmount amount) {
         List<Lotto> lottos = service.issueLottos(amount.getAmount());
         List<String> parsedLottos = LottoParser.toStringList(lottos);
         OutputView.printLottos(parsedLottos);
+        return lottos;
+    }
+
+    public Lotto requestWinLotto() {
+        while (true) {
+            try {
+                String input = InputView.requestWinLotto();
+                InputValidator.validateWinLotto(input);
+                return service.createWinLotto(input);
+            } catch (Exception e) {
+                OutputView.printErrorMessage(e.getMessage());
+            }
+        }
     }
 }
