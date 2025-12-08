@@ -30,4 +30,8 @@ public class PurchaseAmount {
             throw new IllegalArgumentException(INVALID_UNIT);
         }
     }
+
+    public int getAmount() {
+        return amount;
+    }
 }
