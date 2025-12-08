@@ -18,7 +18,7 @@ public class InputValidator {
     private InputValidator() {
     }
 
-    public static void validatePurchaseAmountInput(String input) {
+    public static void validatePurchaseAmount(String input) {
         validateOnlyDigit(input);
         validateWithinIntRange(input);
     }
