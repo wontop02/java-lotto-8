@@ -50,4 +50,8 @@ public class InputValidator {
             throw new IllegalArgumentException(NOT_DIGITS_AND_COMMA_ONLY);
         }
     }
+
+    public static void validateBonusNumber(String input) {
+        validateOnlyDigit(input);
+    }
 }

@@ -20,6 +20,7 @@ public class LottoController {
         PurchaseAmount amount = requestPurchaseAmount();
         List<Lotto> lottos = issueLottos(amount);
         Lotto winLotto = requestWinLotto();
+        int bonus = requestBonusNumber(winLotto);
     }
 
     public PurchaseAmount requestPurchaseAmount() {
@@ -47,6 +48,18 @@ public class LottoController {
                 String input = InputView.requestWinLotto();
                 InputValidator.validateWinLotto(input);
                 return service.createWinLotto(input);
+            } catch (Exception e) {
+                OutputView.printErrorMessage(e.getMessage());
+            }
+        }
+    }
+
+    public int requestBonusNumber(Lotto winLotto) {
+        while (true) {
+            try {
+                String input = InputView.requestBonusNumber();
+                InputValidator.validateBonusNumber(input);
+                return service.createBonusNumber(input, winLotto);
             } catch (Exception e) {
                 OutputView.printErrorMessage(e.getMessage());
             }
