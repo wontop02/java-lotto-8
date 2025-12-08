@@ -32,7 +32,7 @@ public class LottoController {
                 String input = InputView.requestPurchaseAmount();
                 InputValidator.validatePurchaseAmount(input);
                 return service.createAmount(input);
-            } catch (Exception e) {
+            } catch (IllegalArgumentException e) {
                 OutputView.printErrorMessage(e.getMessage());
             }
         }
@@ -51,7 +51,7 @@ public class LottoController {
                 String input = InputView.requestWinLotto();
                 InputValidator.validateWinLotto(input);
                 return service.createWinLotto(input);
-            } catch (Exception e) {
+            } catch (IllegalArgumentException e) {
                 OutputView.printErrorMessage(e.getMessage());
             }
         }
@@ -63,7 +63,7 @@ public class LottoController {
                 String input = InputView.requestBonusNumber();
                 InputValidator.validateBonusNumber(input);
                 return service.createBonusNumber(input, winLotto);
-            } catch (Exception e) {
+            } catch (IllegalArgumentException e) {
                 OutputView.printErrorMessage(e.getMessage());
             }
         }
