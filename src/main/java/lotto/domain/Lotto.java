@@ -14,7 +14,7 @@ public class Lotto {
     private static final String CAN_NOT_DUPLICATED = "로또 번호는 중복될 수 없습니다.";
     private static final String INVALID_NUMBER_RANGE =
             String.format(
-                    "로또 번호는 %d에서 %d 사이어야 합니다.",
+                    "로또 번호는 %d에서 %d 사이여야 합니다.",
                     MIN_NUMBER, MAX_NUMBER
             );
 

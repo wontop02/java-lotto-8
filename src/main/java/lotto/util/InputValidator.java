@@ -1,7 +1,9 @@
 package lotto.util;
 
 import static lotto.constant.LottoConstant.LOTTO_PRICE;
+import static lotto.constant.LottoConstant.MAX_NUMBER;
 import static lotto.constant.LottoConstant.MAX_PURCHASE_AMOUNT;
+import static lotto.constant.LottoConstant.MIN_NUMBER;
 
 import java.math.BigInteger;
 
@@ -18,13 +20,18 @@ public class InputValidator {
                     LOTTO_PRICE, MAX_PURCHASE_AMOUNT
             );
 
+    private static final String INVALID_NUMBER_RANGE =
+            String.format(
+                    "보너스 번호는 %d에서 %d 사이여야 합니다.",
+                    MIN_NUMBER, MAX_NUMBER
+            );
 
     private InputValidator() {
     }
 
     public static void validatePurchaseAmount(String input) {
         validateOnlyDigit(input);
-        validateWithinIntRange(input);
+        validateWithinIntRange(input, INVALID_RANGE);
     }
 
     private static void validateOnlyDigit(String input) {
@@ -33,11 +40,11 @@ public class InputValidator {
         }
     }
 
-    private static void validateWithinIntRange(String input) {
+    private static void validateWithinIntRange(String input, String message) {
         BigInteger value = new BigInteger(input);
         if (value.compareTo(BigInteger.valueOf(Integer.MIN_VALUE)) < 0
                 || value.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0) {
-            throw new IllegalArgumentException(INVALID_RANGE);
+            throw new IllegalArgumentException(message);
         }
     }
 
@@ -53,5 +60,6 @@ public class InputValidator {
 
     public static void validateBonusNumber(String input) {
         validateOnlyDigit(input);
+        validateWithinIntRange(input, INVALID_NUMBER_RANGE);
     }
 }
